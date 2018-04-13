@@ -11,7 +11,7 @@
 @interface ARAlignLabel ()
 
 /* 对齐方式 */
-@property(nonatomic, strong) NSArray *typeArray;
+@property(nonatomic, strong) NSArray * typeArray;
 //上
 @property(nonatomic, assign) BOOL hasTop;
 //左
@@ -81,8 +81,7 @@
     [super drawTextInRect:actualRect];
 }
 
-- (void)textAlign:(void(^)(ARMaker *make))alignType
-{
+- (void)textAlign:(void(^)(ARMaker *make))alignType {
     ARMaker *make = [[ARMaker alloc]init];
     alignType(make);
     self.typeArray = make.typeArray;
@@ -93,8 +92,7 @@
 //工具类
 @implementation ARMaker
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.typeArray = [NSMutableArray array];
@@ -102,8 +100,7 @@
     return self;
 }
 
-- (ARMaker *(^)(enum textAlignType type))addAlignType
-{
+- (ARMaker *(^)(enum textAlignType type))addAlignType {
     __weak typeof (self) weakSelf = self;
     return ^(enum textAlignType type)
     {
